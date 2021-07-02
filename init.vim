@@ -1,4 +1,6 @@
 call plug#begin()
+Plug 'preservim/nerdtree'
+Plug 'arcticicestudio/nord-vim'
 Plug 'tpope/vim-surround'
 Plug 'ayu-theme/ayu-vim'
 Plug 'morhetz/gruvbox'
@@ -28,9 +30,9 @@ nnoremap <leader>sv :source ~/.config/nvim/init.vim<CR>
 " new file splitted - relative to the open file directory
 " must be completed with the new file name
 nnoremap <leader>nfsr :edit %:h/
-nnoremap <C-p> :GFiles<CR>
-nnoremap <C-g>s :GFiles?<CR>
-nnoremap <C-f> :Ag<space>
+nnoremap <C-p>p :GFiles<CR>
+nnoremap <C-p>s :GFiles?<CR>
+nnoremap <C-f>f :Ag<space>
 nnoremap <leader>bf :buffer<space>
 inoremap jk <ESC>
 
@@ -41,21 +43,23 @@ let g:prettier#quickfix_enabled  = 1
 " ---------- <THEME-SETTINGS> ----------
 let g:gruvbox_contrast_light="hard"
 let g:gruvbox_contrast_dark="medium"
+let ayucolor="light"
 set termguicolors
-colorscheme gruvbox
+colorscheme nord
 
 " Custom functions to change between light and dark themes
 function! Light()
     echom "set bg=light"
     set bg=light
-    colorscheme gruvbox
+    colorscheme ayu
+    set cursorline
     set list
 endfunction
 
 function! Dark()
     echom "set bg=dark"
     set bg=dark
-    colorscheme gruvbox
+    colorscheme nord
     set nocursorline
     set nolist
 endfunction
@@ -65,6 +69,12 @@ nnoremap <leader>csd :call Dark()<CR>
 " change scheme to light
 nnoremap <leader>csl :call Light()<CR>
 " ---------- </THEME-SETTINGS> ----------
+
+" ---------- </NERDTREE-SETTINGS> ----------
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+" ---------- </NERDTREE-SETTINGS> ----------
 
 " ---------- <COC-SETTINGS> ----------
 " Always show the signcolumn, otherwise it would shift the text each time
