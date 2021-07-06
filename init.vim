@@ -1,4 +1,5 @@
 call plug#begin()
+Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdtree'
 Plug 'arcticicestudio/nord-vim'
 Plug 'tpope/vim-surround'
@@ -23,6 +24,8 @@ set mouse=a
 set inccommand=split
 set autoindent
 set ruler
+set encoding=UTF-8
+set cursorline
 
 let mapleader=","
 nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<CR>
@@ -33,7 +36,7 @@ nnoremap <leader>nfsr :edit %:h/
 nnoremap <C-p>p :GFiles<CR>
 nnoremap <C-p>s :GFiles?<CR>
 nnoremap <C-f>f :Ag<space>
-nnoremap <leader>bf :buffer<space>
+nnoremap <leader>b :Buffers<CR>
 inoremap jk <ESC>
 
 let g:prettier#autoformat = 1
@@ -52,7 +55,6 @@ function! Light()
     echom "set bg=light"
     set bg=light
     colorscheme ayu
-    set cursorline
     set list
 endfunction
 
@@ -60,7 +62,6 @@ function! Dark()
     echom "set bg=dark"
     set bg=dark
     colorscheme nord
-    set nocursorline
     set nolist
 endfunction
 
@@ -71,9 +72,11 @@ nnoremap <leader>csl :call Light()<CR>
 " ---------- </THEME-SETTINGS> ----------
 
 " ---------- </NERDTREE-SETTINGS> ----------
+let g:webdevicons_enable_nerdtree = 1
 nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-n>f :NERDTreeFind<CR>
 " ---------- </NERDTREE-SETTINGS> ----------
 
 " ---------- <COC-SETTINGS> ----------
