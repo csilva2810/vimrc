@@ -1,4 +1,5 @@
 call plug#begin()
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdtree'
 Plug 'arcticicestudio/nord-vim'
@@ -35,33 +36,39 @@ nnoremap <leader>sv :source ~/.config/nvim/init.vim<CR>
 nnoremap <leader>nfsr :edit %:h/
 nnoremap <C-p>p :GFiles<CR>
 nnoremap <C-p>s :GFiles?<CR>
-nnoremap <C-f>f :Ag<space>
+nnoremap <C-p>f :Ag<space>
 nnoremap <leader>b :Buffers<CR>
 inoremap jk <ESC>
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
 
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_config_present = 1
 let g:prettier#quickfix_enabled  = 1
+let g:prettier#autoformat_require_pragma = 0
 
 " ---------- <THEME-SETTINGS> ----------
 let g:gruvbox_contrast_light="hard"
 let g:gruvbox_contrast_dark="medium"
 let ayucolor="light"
-set termguicolors
-colorscheme nord
+set t_Co=256
+colorscheme onehalfdark
+let g:airline_theme='onehalfdark'
 
 " Custom functions to change between light and dark themes
 function! Light()
     echom "set bg=light"
     set bg=light
-    colorscheme ayu
+    colorscheme onehalflight
     set list
 endfunction
 
 function! Dark()
     echom "set bg=dark"
     set bg=dark
-    colorscheme nord
+    colorscheme onehalfdark
     set nolist
 endfunction
 
@@ -69,6 +76,12 @@ endfunction
 nnoremap <leader>csd :call Dark()<CR>
 " change scheme to light
 nnoremap <leader>csl :call Light()<CR>
+
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 " ---------- </THEME-SETTINGS> ----------
 
 " ---------- </NERDTREE-SETTINGS> ----------
