@@ -18,7 +18,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
-set ignorecase
+set smartcase
 set hidden
 set number
 set mouse=a
@@ -54,8 +54,7 @@ let g:gruvbox_contrast_light="hard"
 let g:gruvbox_contrast_dark="medium"
 let ayucolor="light"
 set t_Co=256
-colorscheme onehalfdark
-let g:airline_theme='onehalfdark'
+colorscheme nord
 
 " Custom functions to change between light and dark themes
 function! Light()
@@ -68,7 +67,7 @@ endfunction
 function! Dark()
     echom "set bg=dark"
     set bg=dark
-    colorscheme onehalfdark
+    colorscheme nord
     set nolist
 endfunction
 
@@ -84,7 +83,7 @@ if exists('+termguicolors')
 endif
 " ---------- </THEME-SETTINGS> ----------
 
-" ---------- </NERDTREE-SETTINGS> ----------
+" ---------- <NERDTREE-SETTINGS> ----------
 let g:webdevicons_enable_nerdtree = 1
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
