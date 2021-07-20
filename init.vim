@@ -18,7 +18,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
-set smartcase
+set ignorecase
 set hidden
 set number
 set mouse=a
@@ -39,10 +39,9 @@ nnoremap <C-p>s :GFiles?<CR>
 nnoremap <C-p>f :Ag<space>
 nnoremap <leader>b :Buffers<CR>
 inoremap jk <ESC>
-nnoremap <leader>h <C-w>h
-nnoremap <leader>j <C-w>j
-nnoremap <leader>k <C-w>k
-nnoremap <leader>l <C-w>l
+nnoremap <leader>nhs :set nohlsearch<CR>
+nnoremap <leader>hs :set hlsearch<CR>
+nnoremap <leader>tt :tabnew<CR>
 
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_config_present = 1
@@ -85,10 +84,9 @@ endif
 
 " ---------- <NERDTREE-SETTINGS> ----------
 let g:webdevicons_enable_nerdtree = 1
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-n>f :NERDTreeFind<CR>
+nnoremap <leader>nn :NERDTreeFocus<CR>
+nnoremap <leader>nt :NERDTreeToggle<CR>
+nnoremap <leader>nf :NERDTreeFind<CR>
 " ---------- </NERDTREE-SETTINGS> ----------
 
 " ---------- <COC-SETTINGS> ----------
