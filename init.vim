@@ -16,9 +16,10 @@ Plug 'kevinoid/vim-jsonc'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
-set ignorecase
+set ignorecase smartcase
 set hidden
 set number
 set mouse=a
@@ -27,6 +28,7 @@ set autoindent
 set ruler
 set encoding=UTF-8
 set cursorline
+set nrformats+=alpha
 
 let mapleader=","
 nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<CR>
@@ -34,14 +36,15 @@ nnoremap <leader>sv :source ~/.config/nvim/init.vim<CR>
 " new file splitted - relative to the open file directory
 " must be completed with the new file name
 nnoremap <leader>nfsr :edit %:h/
-nnoremap <C-p>p :GFiles<CR>
-nnoremap <C-p>s :GFiles?<CR>
-nnoremap <C-p>f :Ag<space>
+nnoremap <leader>pp :GFiles<CR>
+nnoremap <leader>ps :GFiles?<CR>
+nnoremap <leader>pf :Ag<space>
 nnoremap <leader>b :Buffers<CR>
 inoremap jk <ESC>
 nnoremap <leader>nhs :set nohlsearch<CR>
 nnoremap <leader>hs :set hlsearch<CR>
 nnoremap <leader>tt :tabnew<CR>
+nnoremap <leader>vs :vsplit<CR>
 
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_config_present = 1
@@ -51,9 +54,9 @@ let g:prettier#autoformat_require_pragma = 0
 " ---------- <THEME-SETTINGS> ----------
 let g:gruvbox_contrast_light="hard"
 let g:gruvbox_contrast_dark="medium"
-let ayucolor="light"
+let ayucolor="mirage"
 set t_Co=256
-colorscheme nord
+colorscheme ayu
 
 " Custom functions to change between light and dark themes
 function! Light()
@@ -66,7 +69,7 @@ endfunction
 function! Dark()
     echom "set bg=dark"
     set bg=dark
-    colorscheme nord
+    colorscheme ayu
     set nolist
 endfunction
 
