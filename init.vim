@@ -17,6 +17,10 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
+Plug 'rainglow/vim'
+Plug 'joshdick/onedark.vim'
+Plug 'mhartington/oceanic-next'
+Plug 'drewtempelmeyer/palenight.vim'
 call plug#end()
 
 set ignorecase smartcase
@@ -29,6 +33,7 @@ set ruler
 set encoding=UTF-8
 set cursorline
 set nrformats+=alpha
+set nolist
 
 let mapleader=","
 nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<CR>
@@ -46,6 +51,10 @@ nnoremap <leader>hs :set hlsearch<CR>
 nnoremap <leader>tt :tabnew<CR>
 nnoremap <leader>vs :vsplit<CR>
 
+" Increase and decrease splitted window size
+nnoremap <leader>> <C-w>><CR>
+nnoremap <leader>< <C-w><<CR>
+
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_config_present = 1
 let g:prettier#quickfix_enabled  = 1
@@ -56,21 +65,19 @@ let g:gruvbox_contrast_light="hard"
 let g:gruvbox_contrast_dark="medium"
 let ayucolor="mirage"
 set t_Co=256
-colorscheme ayu
+colorscheme OceanicNext
 
 " Custom functions to change between light and dark themes
 function! Light()
     echom "set bg=light"
     set bg=light
     colorscheme onehalflight
-    set list
 endfunction
 
 function! Dark()
     echom "set bg=dark"
     set bg=dark
-    colorscheme ayu
-    set nolist
+    colorscheme OceanicNext
 endfunction
 
 " change scheme to dark
@@ -238,3 +245,7 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " ---------- </COC-SETTINGS> ---------- 
+
+" ---------- <AIRLINE-SETTINGS> ----------
+let g:airline#extensions#branch#displayed_head_limit = 20
+" ---------- </AIRLINE-SETTINGS> ----------
