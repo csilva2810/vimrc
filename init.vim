@@ -21,6 +21,7 @@ Plug 'rainglow/vim'
 Plug 'joshdick/onedark.vim'
 Plug 'mhartington/oceanic-next'
 Plug 'drewtempelmeyer/palenight.vim'
+Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
 set ignorecase smartcase
