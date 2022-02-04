@@ -1,11 +1,8 @@
 call plug#begin()
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdtree'
-Plug 'arcticicestudio/nord-vim'
 Plug 'tpope/vim-surround'
-Plug 'ayu-theme/ayu-vim'
-Plug 'morhetz/gruvbox'
+Plug 'tpope/vim-commentary'
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -17,11 +14,17 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'rainglow/vim'
 Plug 'joshdick/onedark.vim'
 Plug 'mhartington/oceanic-next'
 Plug 'drewtempelmeyer/palenight.vim'
-Plug 'editorconfig/editorconfig-vim'
+Plug 'ayu-theme/ayu-vim'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'morhetz/gruvbox'
+Plug 'arcticicestudio/nord-vim'
+Plug 'mattn/emmet-vim'
 call plug#end()
 
 set ignorecase smartcase
@@ -35,6 +38,12 @@ set encoding=UTF-8
 set cursorline
 set nrformats+=alpha
 set nolist
+set updatetime=100
+
+if (exists('+colorcolumn'))
+  set colorcolumn=80,100
+  highlight ColorColumn ctermbg=9
+endif
 
 let mapleader=","
 nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<CR>
@@ -42,19 +51,26 @@ nnoremap <leader>sv :source ~/.config/nvim/init.vim<CR>
 " new file splitted - relative to the open file directory
 " must be completed with the new file name
 nnoremap <leader>nfsr :edit %:h/
+" git files (git ls-files)
 nnoremap <leader>pp :GFiles<CR>
+" git files (git status)
 nnoremap <leader>ps :GFiles?<CR>
 nnoremap <leader>pf :Ag<space>
+nnoremap <leader>pm :Marks<space>
+" Use Ag to find the word under the cursor
+" in the project files
+nnoremap <leader>pfw :Ag <c-r>=expand("<cword>")<cr><cr>
 nnoremap <leader>b :Buffers<CR>
 inoremap jk <ESC>
-nnoremap <leader>nhs :set nohlsearch<CR>
-nnoremap <leader>hs :set hlsearch<CR>
 nnoremap <leader>tt :tabnew<CR>
 nnoremap <leader>vs :vsplit<CR>
 
 " Increase and decrease splitted window size
 nnoremap <leader>> <C-w>><CR>
 nnoremap <leader>< <C-w><<CR>
+
+" Copy to system clipboard in visual mode
+vnoremap <C-c> "*y
 
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_config_present = 1
@@ -66,7 +82,7 @@ let g:gruvbox_contrast_light="hard"
 let g:gruvbox_contrast_dark="medium"
 let ayucolor="mirage"
 set t_Co=256
-colorscheme OceanicNext
+colorscheme palenight
 
 " Custom functions to change between light and dark themes
 function! Light()
@@ -78,7 +94,7 @@ endfunction
 function! Dark()
     echom "set bg=dark"
     set bg=dark
-    colorscheme OceanicNext
+    colorscheme palenight
 endfunction
 
 " change scheme to dark
