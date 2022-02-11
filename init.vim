@@ -3,6 +3,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -57,8 +58,7 @@ nnoremap <leader>pp :GFiles<CR>
 nnoremap <leader>ps :GFiles?<CR>
 nnoremap <leader>pf :Ag<space>
 nnoremap <leader>pm :Marks<space>
-" Use Ag to find the word under the cursor
-" in the project files
+" Use Ag to find the word under the cursor in the project files
 nnoremap <leader>pfw :Ag <c-r>=expand("<cword>")<cr><cr>
 nnoremap <leader>b :Buffers<CR>
 inoremap jk <ESC>
